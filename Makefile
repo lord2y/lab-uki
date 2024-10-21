@@ -3,8 +3,7 @@
 DOCKER := podman
 IMAGE  := mkosi:1.0.0
 OUTPUT := images
-DOCKER_FLAGS  := --rm --name mkosi_1.0.0 --privileged --init --pid=host --net=host -v ${PWD}/images:/images -w /images
-PODMAN_FLAGS  := --rm --name mkosi_1.0.0 --privileged --systemd=true --pid=host --net=host -v ${PWD}/images:/images -w /images
+FLAGS  := --rm --name mkosi_1.0.0 --privileged --pid=host --net=host -v ${PWD}/images:/images -w /images
 NAME   := mkosi_1.0.0
 
 
@@ -18,12 +17,7 @@ builder:
 	$(DOCKER) build -t $(IMAGE) .
 
 image:
-ifeq (docker, $(DOCKER))
-	$(DOCKER) run $(DOCKER_FLAGS) --name $(NAME) $(IMAGE)
-else
-
-	$(DOCKER) run $(PODMAN_FLAGS) --name $(NAME) $(IMAGE)
-endif
+	$(DOCKER) run $(FLAGS) --name $(NAME) $(IMAGE)
 
 all: require builder image
 
