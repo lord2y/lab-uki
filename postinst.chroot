@@ -18,3 +18,6 @@ sed -i 's/#\?\(PermitRootLogin\s*\).*$/\1 yes/' /etc/ssh/sshd_config
 
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
+
+apt-get autoremove -y
+apt-get clean
