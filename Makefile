@@ -3,7 +3,7 @@
 DOCKER := podman
 IMAGE  := mkosi:1.0.0
 OUTPUT := images
-FLAGS  := --rm --name mkosi_1.0.0 --privileged --pid=host --net=host -v ${PWD}/images:/images -w /images
+FLAGS  := --rm --privileged --pid=host --net=host -v ${PWD}/images:/images -w /images
 NAME   := mkosi_1.0.0
 
 
