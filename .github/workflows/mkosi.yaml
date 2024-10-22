@@ -16,6 +16,8 @@ jobs:
         run: |
            cp postinst.chroot /opt 
            mkosi dependencies
+           apt-get update 
+           apt-get install -y systemd-ukify systemd-repart
       
       - name: build image 
         run: mkosi build
