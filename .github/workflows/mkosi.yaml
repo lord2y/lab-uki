@@ -11,6 +11,11 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - uses: systemd/mkosi@v24.3
-      - run: |
+
+      - name: configure 
+        run: |
            cp postinst.chroot /opt 
-           mkosi -I mkosi.conf
+           mkosi dependencies
+      
+      - name: build image 
+        run: mkosi build
