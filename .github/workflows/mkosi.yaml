@@ -22,3 +22,10 @@ jobs:
       
       - name: build image 
         run: mkosi build
+
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: sid-usi.efi
+          path: ~/**/**/**/sid-usi.efi
+          if-no-files-found: error
