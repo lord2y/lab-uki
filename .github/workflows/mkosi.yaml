@@ -1,0 +1,14 @@
+---
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: mkosi
+    runs-on: debian-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: systemd/mkosi@v24.3
+      - run: mkosi -I mkosi.conf
