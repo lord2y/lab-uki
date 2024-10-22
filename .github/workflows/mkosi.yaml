@@ -13,9 +13,12 @@ jobs:
       - uses: systemd/mkosi@v24.3
 
       - name: configure 
+        run: cp postinst.chroot /opt 
+
+      - name: Install dependencies
         run: |
-           cp postinst.chroot /opt 
-           mkosi dependencies | xargs -d '\n' sudo apt-get systemd-ukify systemd-repart
+          sudo apt-get update
+          sudo apt-get install -y systemd-ukify
       
       - name: build image 
         run: mkosi build
