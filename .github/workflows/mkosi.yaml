@@ -15,12 +15,10 @@ jobs:
       - name: configure 
         run: cp postinst.chroot /opt 
 
-#      - name: Install dependencies
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install software-properties-common
-#          sudo apt-add-repository universe -y
-#          sudo apt-get install -y systemd-ukify
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y systemd-ukify systemd-boot systemd-repart
       
       - name: build image 
         run: mkosi build
