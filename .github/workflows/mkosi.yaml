@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     name: mkosi
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - uses: systemd/mkosi@v24.3
