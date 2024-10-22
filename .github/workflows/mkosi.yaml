@@ -7,7 +7,7 @@ on:
 jobs:
   deploy:
     name: mkosi
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@master
       - uses: systemd/mkosi@v24.3
@@ -15,12 +15,12 @@ jobs:
       - name: configure 
         run: cp postinst.chroot /opt 
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install software-properties-common
-          sudo apt-add-repository universe -y
-          sudo apt-get install -y systemd-ukify
+#      - name: Install dependencies
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install software-properties-common
+#          sudo apt-add-repository universe -y
+#          sudo apt-get install -y systemd-ukify
       
       - name: build image 
         run: mkosi build
